@@ -1,108 +1,37 @@
-import { Card, CardBody, Typography } from "@material-tailwind/react";
-import Chart from "react-apexcharts";
+import React from 'react';
+import { Card, CardBody, Typography } from '@material-tailwind/react';
+import Chart from 'react-apexcharts';
 
-const chartConfig = {
-  type: "line",
+const pieChartConfig = {
+  type: 'pie',
   height: 380,
-  widht: 380,
-
-  series: [
-    {
-      name: "Units",
-      data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-    }, 
-  ],
+  series: [34, 23, 43],
   options: {
-    chart: {
-      toolbar: {
-        show: false,
-      },
-    },
-    title: {
-      show: "",
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    colors: ["#ffb300"],
-    stroke: {
-      lineCap: "round",
-      curve: "smooth",
-    },
-    markers: {
-      size: 0,
-    },
-    xaxis: {
-      axisTicks: {
-        show: false,
-      },
-      axisBorder: {
-        show: false,
-      },
+    labels: ['Postive', 'Negative', 'Neutral'],
+    colors: ['#3ae3a6', '#38a169', '#3182ce'],
+    legend: {
       labels: {
-        style: {
-          colors: "#616161",
-          fontSize: "12px",
-          fontFamily: "inherit",
-          fontWeight: 400,
-        },
+        colors: '#fff',
+        useSeriesColors: false,
       },
-      categories: [
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-    },
-    yaxis: {
-      labels: {
-        style: {
-          colors: "#616161",
-          fontSize: "12px",
-          fontFamily: "inherit",
-          fontWeight: 400,
-        },
-      },
-    },
-    grid: {
-      show: true,
-      borderColor: "#dddddd",
-      strokeDashArray: 1,
-      xaxis: {
-        lines: {
-          show: true,
-        },
-      },
-      padding: {
-        top: 5,
-        right: 20,
-      },
-    },
-    fill: {
-      opacity: 0.8,
     },
     tooltip: {
-      theme: "dark",
+      theme: 'dark',
     },
   },
 };
 
-export default function LineChart() {
+export default function PieChart() {
   return (
-    <Card>
-      <CardBody className="px-2 pb-0 ">
+    <Card className="bg-[#323262] text-cyan-50">
+      <CardBody className="px-2 pb-0">
         <Typography
           variant="h5"
-          className="ml-4 self-center sm:self-start font-semibold text-[#323226] "
+          className="ml-4 self-center sm:self-start font-semibold text-cyan-50"
         >
-          Units Consumption This Year
+          Sentiment From Data
         </Typography>
-        <Chart {...chartConfig} />
+        <Chart {...pieChartConfig} />
       </CardBody>
     </Card>
   );

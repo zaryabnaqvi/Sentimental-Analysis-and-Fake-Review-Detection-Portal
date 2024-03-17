@@ -5,11 +5,11 @@ import { faAngleDoubleRight, faCheckDouble } from "@fortawesome/free-solid-svg-i
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 
-import Surveillance from "../Assets/Illustrations/SurveillanceUpscaled.png";
+import Surveillance from "../Assets/1710586854274-removebg-preview.png";
 
 const HomePage = () => {
     return (
-        <div>
+        <div className="text-white">
             <div className="min-h-screen flex flex-col">
                 <NavBar />
                 <div className="flex-grow flex flex-col flex-col-reverse lg:flex-row justify-center">
@@ -17,41 +17,43 @@ const HomePage = () => {
                         <div className="flex flex-col gap-10 lg:gap-12">
                             <Typography
                                 variant="h1"
-                                className="text-center lg:text-left text-3xl lg:text-4xl 2xl:text-6xl text-[#323229] transition-all duration-400"
+                                className="text-center lg:text-left text-3xl lg:text-4xl 2xl:text-6xl transition-all duration-400"
+                                style={{ textShadow: "0px 1px 2px rgba(255, 255, 255, 0.5)" }}
                             >
-                                Track <span className="text-lime-900">Energy</span>, Save{" "}
-                                <span className="text-[#8f5a0a]">Money</span>
+                                Track <span className="text-green-500">Positive</span>, <span className="text-red-700">Negative</span>{" "}
+                                <span className="text-[#3ae3a6]">Real & Fake</span>
                             </Typography>
                             <Typography>
-                                Experience the convenience of our surveillance system tailored specifically for home
-                                electric meters. Monitor your energy usage in real-time, empowering you to track your
-                                bills and optimize your consumption to save money. With advanced features designed to
-                                enhance efficiency and reduce costs, take control of your energy usage and enjoy
-                                significant savings over time.
+                                Sentiment Analysis is a process of computationally identifying and categorizing opinions expressed in a piece of text, determining whether the sentiment expressed is positive, negative, or neutral. It's widely used in understanding customer feedback, social media monitoring, and market research. A Fake Review Model and System employs advanced algorithms to detect and filter out fraudulent reviews from genuine ones.
                             </Typography>
                         </div>
                         <div className="flex items-center justify-center gap-12 lg:gap-20 lg:justify-start px-16 lg:px-0 transition-all duration-400">
                             <div className="flex gap-2 items-center">
                                 <FontAwesomeIcon icon={faCheckDouble} color="green" />
-                                <Typography>Reliable</Typography>
+                                <Typography>Positive</Typography>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <FontAwesomeIcon icon={faCheckDouble} color="green" />
-                                <Typography>Accurate</Typography>
+                                <Typography>Negative</Typography>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <FontAwesomeIcon icon={faCheckDouble} color="green" />
-                                <Typography>Secure</Typography>
+                                <Typography>Real</Typography>
                             </div>
                         </div>
                         <div className="flex justify-center lg:justify-start">
-                            <Button variant="gradient" color="amber">
-                                Order Now <FontAwesomeIcon icon={faAngleDoubleRight} className="pl-2" />
+                            <Button  className="text-gray-900 !bg-[linear-gradient(270deg,#3ae3a6,#2bb2ff)]">
+                                GET STARTED <FontAwesomeIcon icon={faAngleDoubleRight} className="pl-2" />
                             </Button>
                         </div>
                     </div>
                     <div className="flex-1 flex items-center justify-center">
-                        <img src={Surveillance} alt="" className="w-full max-w-3xl p-8 md:p-4 lg:p-0 transition-all duration-400" />
+                        <img
+                            src={Surveillance}
+                            alt=""
+                            className="w-[28rem] max-w-3xl p-8 md:p-4 lg:p-0 transition-all duration-400"
+                            // style={{ filter: "drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.5))" }}
+                        />
                     </div>
                 </div>
             </div>

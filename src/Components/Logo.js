@@ -1,7 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 
-import FilledLogo from "../Assets/Logo/Filled.png";
-import TransparentLogo from "../Assets/Logo/Transparent.png";
+import FilledLogo from "../Assets/Asset 1@2x (1).png";
+import TransparentLogo from "../Assets/Asset 1@2x (1).png";
 
 const Logo = ({ variant = "default", filled = true }) => {
     return (
@@ -9,13 +9,13 @@ const Logo = ({ variant = "default", filled = true }) => {
             {(variant === "default" || variant === "icon") && (
                 <img
                     src={filled ? FilledLogo : TransparentLogo}
-                    className="w-[4.5rem] object-cover select-none"
+                    className="w-[3.5rem] object-cover select-none rounded-full m-2 p-2"
                     alt="Website's logo"
                 />
             )}
             {(variant === "default" || variant === "text") && (
-                <Typography variant="h6" className="font-semibold text-[#323226] select-none">
-                    Electric Meter Surveillance System
+                <Typography variant="h6" className="font-semibold text-[#fffced] select-none">
+                    REVSAFE
                 </Typography>
             )}
         </a>

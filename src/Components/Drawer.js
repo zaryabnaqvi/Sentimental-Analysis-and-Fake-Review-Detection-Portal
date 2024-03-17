@@ -11,17 +11,18 @@ export function DrawerWithNavigation({ open, setOpen }) {
   return (
     <>
       <Drawer
+        style={{borderRightColor:"whitesmoke",border:2}}
         overlay={false}
-        className="top-auto"
+        className="top-auto bg-[#1b1b35] text-yellow-50 border-r-2"
         overlayProps={{ className: "fixed inset-0 z-50 bg-black opacity-50" }}
         open={open}
         onClose={() => setOpen(open)}
       >
-        <List className="mt-2 mx-0 !min-w-full">
+        <List className="mt-2 mx-0 text-cyan-50 !min-w-full">
           <Link to="/dashboard">
             <ListItem
               ripple={false}
-              className="hover:!bg-transparent focus:!bg-transparent hover:translate-x-1"
+              className="hover:!bg-transparent hover:text-teal-400 focus:!bg-transparent hover:translate-x-1"
             >
               <ListItemPrefix>
                 <svg
@@ -42,7 +43,7 @@ export function DrawerWithNavigation({ open, setOpen }) {
           </Link>
           <hr className="w-full" />
           <Link to="/predictions">
-            <ListItem className="hover:!bg-transparent focus:!bg-transparent hover:translate-x-1">
+            <ListItem className="hover:!bg-transparent hover:text-teal-400 focus:!bg-transparent hover:translate-x-1">
               <ListItemPrefix>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +63,7 @@ export function DrawerWithNavigation({ open, setOpen }) {
             
           </Link>
           <Link to="/profile">
-            <ListItem className="hover:!bg-transparent focus:!bg-transparent hover:translate-x-1">
+            <ListItem className="hover:!bg-transparent hover:text-teal-400 focus:!bg-transparent hover:translate-x-1">
               <ListItemPrefix>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

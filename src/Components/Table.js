@@ -1,54 +1,60 @@
 import { Card, Typography } from "@material-tailwind/react";
 
 const TABLE_HEAD = [
-  "Time",
-  "Units Consumed",
-  "Units Consumed last Month(Same time)",
+  "S.No",
+  "Review",
+  "Sentiment",
+  "Authenicity",
 ];
 
 const TABLE_ROWS = [
   {
-    name: "John Michael",
-    job: "Manager",
-    date: "23/04/18",
+    num: "John Michael",
+    review: "Manager",
+    sentiment: "positive",
+    fake:"fake"
   },
   {
-    name: "Alexa Liras",
-    job: "Developer",
-    date: "23/04/18",
+    num: "Alexa Liras",
+    review: "Developer",
+    sentiment: "positive",
+    fake:"fake"
   },
   {
-    name: "Laurent Perrier",
-    job: "Executive",
-    date: "19/09/17",
+    num: "Laurent Perrier",
+    review: "Executive",
+    sentiment: "positive",
+    fake:"fake"
   },
   {
-    name: "Michael Levi",
-    job: "Developer",
-    date: "24/12/08",
+    num: "Michael Levi",
+    review: "Developer",
+    sentiment: "positive",
+    fake:"fake"
   },
   {
-    name: "Richard Gran",
-    job: "Manager",
-    date: "04/10/21",
+    num: "Richard Gran",
+    review: "Manager",
+    sentiment: "positive",
+    fake:"fake"
   },
 ];
 
 export function DefaultTable() {
   return (
-    <Card className="mt-5 h-full w-4/5 overflow-scroll max-h-96 rounded-none mx-auto">
-      <table className=" w-full min-w-max table-auto text-left">
-        <thead>
-          <tr>
-            {TABLE_HEAD.map((head) => (
+    <Card className="mt-5 h-full w-11/12 bg-[#323262] text-cyan-50 rounded-md  max-h-96 mx-auto">
+      <table className=" w-full min-w-max table-auto text-left text-cyan-50 rounded-md">
+        <thead className="rounded-md">
+          <tr className="rounded-md">
+            {TABLE_HEAD.map((head,idx) => (
               <th
                 key={head}
-                className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                className="border-b border-blue-gray-100 bg-[#4646b2] p-4 rounded"
               >
                 <Typography
                   variant="small"
-                  color="blue-gray"
-                  className="font-normal leading-none opacity-70"
+                  color="white"
+                  className="font-normal leading-none"
                 >
                   {head}
                 </Typography>
@@ -57,37 +63,46 @@ export function DefaultTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map(({ name, job, date }, index) => {
+          {TABLE_ROWS.map(({ num, review, sentiment,fake }, index) => {
             const isLast = index === TABLE_ROWS.length - 1;
             const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
             return (
-              <tr key={name}>
+              <tr key={num}>
                 <td className={classes}>
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="white"
                     className="font-normal"
                   >
-                    {name}
+                    {num}
                   </Typography>
                 </td>
                 <td className={classes}>
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="white"
                     className="font-normal"
                   >
-                    {job}
+                    {review}
                   </Typography>
                 </td>
                 <td className={classes}>
                   <Typography
                     variant="small"
-                    color="blue-gray"
+                    color="white"
                     className="font-normal"
                   >
-                    {date}
+                    {sentiment}
+                  </Typography>
+                </td>
+                <td className={classes}>
+                  <Typography
+                    variant="small"
+                    color="white"
+                    className="font-normal"
+                  >
+                    {fake}
                   </Typography>
                 </td>
               </tr>

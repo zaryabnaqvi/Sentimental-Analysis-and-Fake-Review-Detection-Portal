@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import {
   Card,
   Typography,
@@ -7,84 +6,42 @@ import {
   Button,
   Input,
 } from "@material-tailwind/react";
-
 import Logo from "../Components/Logo";
 import { TextLink } from "../Components/Typography";
 
 const SignInPage = () => {
-  const availableRoles = [
-    {
-      label: "Administrator",
-      value: "administrator",
-      description:
-        "Account owner that performs tasks requiring unrestricted access.",
-    },
-    {
-      label: "Standard",
-      value: "standard",
-      description: "User within an account that performs daily tasks.",
-    },
-  ];
 
-  const [selectedRole, setSelectedRole] = useState(availableRoles[0].value);
-  const handleRoleChange = (event) => {
-    setSelectedRole(event.target.value);
-  };
 
-  const RoleSelector = ({ name, availableRoles }) => {
-    return (
-      <div className="flex flex-col gap-4">
-        {availableRoles.map((role, index) => (
-          <Card
-            shadow={false}
-            className={`p-2 border-2 ${
-              selectedRole === role.value
-                ? "border-amber-500 bg-[#fffdf5]"
-                : "border-gray-200"
-            }`}
-            key={index}
-          >
-            <Radio
-              name={name}
-              value={role.value}
-              checked={selectedRole === role.value}
-              onChange={handleRoleChange}
-              label={
-                <>
-                  <Typography className="font-medium text-gray-800">
-                    {role.label}
-                  </Typography>
-                  <Typography
-                    variant="small"
-                    className="font-normal text-gray-700"
-                  >
-                    {role.description}
-                  </Typography>
-                </>
-              }
-              color="amber"
-              containerProps={{
-                className: "-mt-4",
-              }}
-            />
-          </Card>
-        ))}
-      </div>
-    );
-  };
+  // const [selectedRole, setSelectedRole] = useState(availableRoles[0].value);
+
+  // State for form fields
+
+
+
+
 
   const UserForm = () => {
+    const [formData, setFormData] = useState({
+      email: "",
+      password: "",
+    });
+  
+  // Update form fields
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
     const LegalPrompt = () => {
       return (
-        <div className="bg-gray-100 p-4 text-justify">
-          <p className="text-xs text-gray-700 mb-4">
-            By signing in to the Electric Surveillance System, you agree to
-            comply with all applicable laws and regulations regarding the use of
-            this system.
+        <div className="bg-gray-800 p-4 text-justify rounded-lg">
+          <p className="text-xs text-gray-100 mb-4">
+            By signing in to the Sentimental Analysis and Fake Review Detection System, you agree to comply with all applicable laws and regulations regarding the use of this system.
             <br></br>
             <br></br>
-            You also acknowledge that your activities within the system may be
-            monitored and recorded for security purposes.
+            You also acknowledge that your activities within the system may be monitored and recorded for security purposes.
           </p>
         </div>
       );
@@ -94,31 +51,36 @@ const SignInPage = () => {
       <form className="flex flex-col gap-8">
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
-            <Typography className="text-xs font-semibold">Email</Typography>
+            <Typography className="text-xs font-semibold text-gray-200">Email</Typography>
             <Input
-              size="md"
-              placeholder="name@mail.com"
-              className="!border-t-blue-gray-200 focus:!border-t-amber-500"
-              color="amber"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
+  size="md"
+  placeholder="name@mail.com"
+  className="!border-t-blue-gray-200 focus:!border-t-teal-300 text-yellow-50"
+  color="teal" labelProps={{
+    className: "before:content-none after:content-none text-gray-200",
+  }}
+  name="email"
+  value={formData.email} // Set value to formData.email
+  onChange={handleFormChange} // Call handleFormChange when input changes
+/>
+
           </div>
           <div className="flex flex-col gap-1">
-            <Typography className="text-xs font-semibold">Password</Typography>
+            <Typography className="text-xs font-semibold text-gray-200">Password</Typography>
             <Input
               placeholder="********"
-              className=" !border-t-blue-gray-200 focus:!border-t-amber-500"
-              color="amber"
-              labelProps={{
-                className: "before:content-none after:content-none",
+              className=" !border-t-blue-gray-200 focus:!border-t-teal-300"
+              color="teal"            labelProps={{
+                className: "before:content-none after:content-none text-gray-200",
               }}
+              name="password"
+              value={formData.password}
+              onChange={handleFormChange}
             />
-            <Typography className="text-right">
+            <Typography className="text-right text-gray-200">
               <a
                 href="."
-                className="font-medium text-xs text-amber-500 hover:text-amber-600 active:text-amber-700 hover:underline"
+                className="font-medium text-xs text-teal-300 hover:text-teal-400 active:text-teal-400 hover:underline"
               >
                 Forgot password?
               </a>
@@ -126,7 +88,7 @@ const SignInPage = () => {
           </div>
         </div>
         <LegalPrompt />
-        <Button color="amber" type="submit" fullWidth>
+        <Button color="teal" type="submit" fullWidth>
           Sign In
         </Button>
       </form>
@@ -134,27 +96,27 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-16 py-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-16 py-8 bg-gray-800 text-white">
       <Card
         shadow={false}
-        className="w-full md:w-fit max-w-md flex flex-col items-center gap-6 px-8 py-12 md:border md:border-gray-300"
+        className="w-full md:w-fit max-w-md flex flex-col items-center gap-6 px-8 py-12 md:border md:border-gray-300 bg-[#1b1b35]"
       >
         <div>
           <Logo />
         </div>
         <div className="flex flex-col gap-4">
-          <Typography className="font-light text-center text-gray-800">
+          <Typography className="font-light text-center text-gray-200">
             Sign In
           </Typography>
         </div>
         <div className="w-full md:w-96 flex flex-col gap-6 transition-all duration-400">
-          <RoleSelector name="userRole" availableRoles={availableRoles} />
+          {/* <RoleSelector name="userRole" availableRoles={availableRoles} /> */}
           <UserForm />
         </div>
         <div>
-          <Typography variant="small">
+          <Typography color="white"variant="small">
             Don't have an account?{" "}
-            <TextLink href="/accounts/sign-up">Sign up</TextLink>
+            <TextLink className={"text-teal-300"} href="/accounts/sign-up">Sign up</TextLink>
           </Typography>
         </div>
       </Card>

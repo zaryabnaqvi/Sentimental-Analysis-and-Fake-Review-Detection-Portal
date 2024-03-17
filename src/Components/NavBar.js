@@ -30,7 +30,8 @@ const NavBar = () => {
                     variant="text"
                     size="sm"
                     ripple={false}
-                    className="w-full lg:w-fit font-medium text-[0.85rem] text-start text-gray-800 capitalize"
+                    color="white"
+                    className="w-full lg:w-fit font-medium text-[0.85rem] text-start capitalize"
                 >
                     {children}
                 </Button>
@@ -49,12 +50,12 @@ const NavBar = () => {
     const accessControlButtons = (
         <div className="flex items-center gap-2">
             <a href="/accounts/sign-in" className="min-w-24 flex-1">
-                <Button variant="text" size="sm" fullWidth>
+                <Button variant="text" size="sm" color="white" fullWidth>
                     Sign In
                 </Button>
             </a>
             <a href="/accounts/sign-up" className="min-w-24 flex-1">
-                <Button variant="gradient" size="sm" fullWidth>
+                <Button variant="gradient" size="sm" color="white" fullWidth>
                     Sign Up
                 </Button>
             </a>
@@ -65,12 +66,12 @@ const NavBar = () => {
         <FontAwesomeIcon
             icon={openNav ? faClose : faBars}
             onClick={() => setOpenNav(!openNav)}
-            className="w-5 h-5 p-2 rounded-lg text-inherit hover:bg-gray-100 active:bg-gray-200 focus:bg-transparent"
+            className="w-5 h-5 p-2 rounded-lg text-inherit hover:bg-gray-100 active:bg-gray-200 focus:bg-transparent text-white"
         />
     );
 
     return (
-        <Navbar className="sticky top-0 px-4 py-2 border-b border-gray-300 text-gray-900" shadow={scrolled} fullWidth>
+        <Navbar className="sticky top-0 px-4 py-2 bg-[#1b1b35] border-b border-gray-700 text-white" shadow={scrolled} fullWidth>
             <div className="flex items-center justify-between">
                 <div>
                     <Logo />
@@ -82,7 +83,7 @@ const NavBar = () => {
             <Collapse open={openNav}>
                 <div className="flex flex-col gap-4">
                     {navList}
-                    <hr />
+                    <hr className="border-gray-700" />
                     {accessControlButtons}
                 </div>
             </Collapse>

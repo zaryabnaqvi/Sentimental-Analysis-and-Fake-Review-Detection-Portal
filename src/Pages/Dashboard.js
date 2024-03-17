@@ -13,10 +13,11 @@ import {
 import Logo from "../Components/Logo";
 import { DrawerWithNavigation } from "../Components/Drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCalendar, faEnvelope, faFaceMeh, faFaceSadCry, faFaceSmile, faFile, faSearch, faStar } from "@fortawesome/free-solid-svg-icons";
 import { DefaultTable } from "../Components/Table";
 import Example from "../Components/LineChart";
 import Footer from "../Components/Footer";
+import BarChart from "../Components/BarChart";
 
 const Dashboard = () => {
   const d = new Date();
@@ -38,11 +39,12 @@ const Dashboard = () => {
   return (
     <>
       <Navbar
-        className="sticky top-0 z-50 px-4 py-2 border-b border-gray-300 text-gray-900"
-        shadow={scrolled}
+        className={`sticky top-0 z-50 px-4 py-2 border-b border-gray-300 ${
+          scrolled ? "bg-[#1b1b35] text-white" : "bg-[#1b1b35] text-yellow-50"
+        }`}
         fullWidth
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <div className="flex justify-center">
             <Button
               ripple={false}
@@ -52,7 +54,7 @@ const Dashboard = () => {
                 setOpen(!open);
               }}
             >
-              <FontAwesomeIcon className="text-base" icon={faBars} />
+              <FontAwesomeIcon className="text-base text-white" icon={faBars} />
             </Button>
             <Logo />
           </div>
@@ -80,79 +82,116 @@ const Dashboard = () => {
       </Navbar>
       
       <DrawerWithNavigation open={open} setOpen={setOpen} />
-      <main onClick={() => setOpen(false)}>
-        <div className=" flex flex-col lg:flex-row mt-10 w-4/5 mx-auto justify-between items-center">
+      <main onClick={() => setOpen(false)} className=" bg-[#1b1b35]">
+        <div className=" flex flex-col lg:flex-row mt-10 w-11/12 mx-auto justify-between items-center">
           <Typography
             variant="h4"
-            className="self-center sm:self-start font-semibold text-[#323226] "
+            className="self-center sm:self-start font-semibold text-cyan-50 bg-[#323262] px-4 py-2 rounded-lg  shadow"
           >
-            Units Consumption Per Day
+            Detection and Analysis Portal
           </Typography>
           <div className="flex flex-col lg:flex-row-reverse mt-5 md:mt-0 self-center sm:self-end">
-            <div>
-              <Input
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                type="date"
-                className=" !border-t-blue-gray-200 focus:!border-amber-500 mb-1"
-                color="amber"
-                labelProps={{
-                  className:
-                    "before:content-none after:content-none border-none",
-                }}
-              />
+           
+            <div className="self-center sm:self-end md:w-auto mr-4">
+              <Button className="mr-0 md:mr-3 mt-3 lg:mt-0 bg-[#3ae3a6] text-gray-900">
+                <FontAwesomeIcon className="mr-2 " icon={faSearch} />
+                Generate Insights
+              </Button>
             </div>
             <div className="self-center sm:self-end md:w-auto">
-              <Button className="mr-0 md:mr-3 mt-3 lg:mt-0 ">
-                <FontAwesomeIcon className="mr-2" icon={faSearch} />
-                Search
+              <Button className="mr-0 md:mr-3 mt-3 lg:mt-0 text-gray-900 bg-[#3ae3a6]">
+                <FontAwesomeIcon className="mr-2" icon={faFile} />
+                Upload CSV File 
               </Button>
             </div>
           </div>
         </div>
-        <div>
-          <DefaultTable />
+
+        
+       
+        <div className="graphs_sec mb-10 flex flex-wrap mt-10 w-11/12 mx-auto">
+
+        <div class="flex flex-wrap -m-4 text-center w-full mb-2">
+      
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="bg-[#323262] text-cyan-50 border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
+         
+          <FontAwesomeIcon icon={faEnvelope} className="text-[#3ae3a6] w-12 h-12 mb-3 inline-block"/>
+          <h2 class="title-font font-medium text-3xl text-[#fff]">1.3K</h2>
+          <p class="leading-relaxed">Total Reviews</p>
         </div>
-        <div className="graphs_sec mb-10 flex flex-col md:flex-row mt-10 w-4/5 mx-auto">
-          <div className="w-full md:w-6/12">
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="bg-[#323262] text-cyan-50 border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
+         
+          <FontAwesomeIcon icon={faFaceSmile} className="text-[#3ae3a6] w-12 h-12 mb-3 inline-block"/>
+          <h2 class="title-font font-medium text-3xl text-[#fff]">1.3K</h2>
+          <p class="leading-relaxed">Positive</p>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="bg-[#323262] text-cyan-50 border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
+         
+          <FontAwesomeIcon icon={faFaceSadCry} className="text-[#3ae3a6] w-12 h-12 mb-3 inline-block"/>
+          <h2 class="title-font font-medium text-3xl text-[#fff]">1.3K</h2>
+          <p class="leading-relaxed">Negative</p>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="bg-[#323262] text-cyan-50 border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
+         
+          <FontAwesomeIcon icon={faFaceMeh} className="text-[#3ae3a6] w-12 h-12 mb-3 inline-block"/>
+          <h2 class="title-font font-medium text-3xl text-[#fff]">1.3K</h2>
+          <p class="leading-relaxed">Neutral</p>
+        </div>
+      </div>
+    </div>
+          <div className="w-full md:w-5/12">
             <Example />
           </div>
-          <div className="mt-5 md:mt-0 md:ml-5 flex justify-between flex-col w-full md:w-6/12">
-            <Card>
-              <CardBody>
-                <Typography
-                  variant="h5"
-                  className="mb-2 font-semibold text-[#323226]"
-                >
-                  Units
-                </Typography>
-                <Typography>
-                  The place is close to Barceloneta Beach and bus stop just 2
-                  min by walk
-                </Typography>
-              </CardBody>
-              <CardFooter className="pt-0">
-                <Button>Read More</Button>
-              </CardFooter>
-            </Card>
-            <Card className="mt-5 md:mt-0">
-              <CardBody>
-                <Typography
-                  variant="h5"
-                  className="mb-2 font-semibold text-[#323226]"
-                >
-                  Units
-                </Typography>
-                <Typography>
-                  The place is close to Barceloneta Beach and bus stop just 2
-                  min by walk
-                </Typography>
-              </CardBody>
-              <CardFooter className="pt-0">
-                <Button>Read More</Button>
-              </CardFooter>
-            </Card>
+          <div className="w-full md:ml-5 md:w-6/12">
+            <BarChart />
           </div>
+          
+          {/* <div className="mt-5 md:mt-0 md:ml-5 flex justify-between flex-col w-full md:w-1/2">
+            <Card className="bg-[#323262] text-cyan-50">
+              <CardBody>
+                <Typography
+                  variant="h5"
+                  className="mb-2 font-semibold text-cyan-50"
+                >
+                  Units
+                </Typography>
+                <Typography>
+                  The place is close to Barceloneta Beach and bus stop just 2
+                  min by walk
+                </Typography>
+              </CardBody>
+              <CardFooter className="pt-0">
+                <Button>Read More</Button>
+              </CardFooter>
+            </Card>
+            <Card className="mt-5 md:mt-0 bg-[#323262] text-cyan-50" >
+              <CardBody>
+                <Typography
+                  variant="h5"
+                  className="mb-2 font-semibold text-cyan-50"
+                >
+                  Units
+                </Typography>
+                <Typography>
+                  The place is close to Barceloneta Beach and bus stop just 2
+                  min by walk
+                </Typography>
+              </CardBody>
+              <CardFooter className="pt-0">
+                <Button>Read More</Button>
+              </CardFooter>
+            </Card>
+          </div> */}
+        </div>
+        <div className="mb-5">
+          <DefaultTable />
         </div>
         <Footer />
       </main>

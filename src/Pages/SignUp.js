@@ -20,7 +20,7 @@ const SignUpPage = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
-    ValidateForm();
+    validateForm();
   }, [name, email, password, confirmPassword]);
 
   const handleNameChange = (event) => {
@@ -39,7 +39,7 @@ const SignUpPage = () => {
     setConfirmPassword(event.target.value);
   };
 
-  const ValidateForm = () => {
+  const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const nameRegex = /^[A-Za-z]+$/;
 
@@ -87,47 +87,49 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-16 py-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-16 py-8 bg-gray-800 text-white">
       <Card
         shadow={false}
-        className="w-full md:w-fit max-w-md flex flex-col items-center gap-6 px-8 py-12 md:border md:border-gray-300"
+        className="w-full md:w-fit max-w-md flex flex-col items-center gap-6 px-8 py-12 md:border md:border-gray-300 bg-[#1b1b35]"
       >
         <div>
           <Logo />
         </div>
         <div className="flex flex-col gap-4">
-          <Typography className="font-light text-center text-gray-800 mb-2">
+          <Typography className="font-light text-center text-gray-200 mb-2">
             Sign Up
           </Typography>
         </div>
         <form className="w-full md:w-96 flex flex-col gap-6 transition-all duration-400">
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
-              <Typography className="text-xs font-semibold">Name</Typography>
+              <Typography className="text-xs font-semibold text-gray-200">
+                Name
+              </Typography>
               <Input
                 size="md"
                 placeholder="Name"
-                className="!border-t-blue-gray-200 focus:!border-t-amber-500"
-                color="amber"
-                value={name}
+                className="!border-t-blue-gray-200 focus:!border-t-teal-300"
+                color="teal"               value={name}
                 onChange={handleNameChange}
                 labelProps={{
-                  className: "before:content-none after:content-none",
+                  className: "before:content-none after:content-none text-gray-200",
                 }}
               />
               {nameError && <p className="text-red-500 text-xs">{nameError}</p>}
             </div>
             <div className="flex flex-col gap-1">
-              <Typography className="text-xs font-semibold">Email</Typography>
+              <Typography className="text-xs font-semibold text-gray-200">
+                Email
+              </Typography>
               <Input
                 size="md"
                 placeholder="abc.123@mail.com"
-                className="!border-t-blue-gray-200 focus:!border-t-amber-500"
-                color="amber"
-                value={email}
+                className="!border-t-blue-gray-200 focus:!border-t-teal-300"
+                color="teal"               value={email}
                 onChange={handleEmailChange}
                 labelProps={{
-                  className: "before:content-none after:content-none",
+                  className: "before:content-none after:content-none text-gray-200",
                 }}
               />
               {emailError && (
@@ -135,19 +137,18 @@ const SignUpPage = () => {
               )}
             </div>
             <div className="flex flex-col gap-1">
-              <Typography className="text-xs font-semibold">
+              <Typography className="text-xs font-semibold text-gray-200">
                 Password
               </Typography>
               <div className="relative">
                 <Input
                   placeholder="********"
-                  className=" !border-t-blue-gray-200 focus:!border-t-amber-500 pr-10"
-                  color="amber"
-                  type={showPassword ? "text" : "password"} // Change type based on visibility
+                  className=" !border-t-blue-gray-200 focus:!border-t-teal-300 pr-10"
+                  color="teal"                  type={showPassword ? "text" : "password"} // Change type based on visibility
                   value={password}
                   onChange={handlePasswordChange}
                   labelProps={{
-                    className: "before:content-none after:content-none",
+                    className: "before:content-none after:content-none text-gray-200",
                   }}
                 />
                 <button
@@ -157,24 +158,24 @@ const SignUpPage = () => {
                 >
                   <FontAwesomeIcon
                     icon={showPassword ? faEyeLowVision : faEye}
+                    className="text-gray-200"
                   />
                 </button>
               </div>
             </div>
             <div className="flex flex-col gap-1">
-              <Typography className="text-xs font-semibold">
+              <Typography className="text-xs font-semibold text-gray-200">
                 Confirm Password
               </Typography>
               <div className="relative">
                 <Input
                   placeholder="********"
-                  className=" !border-t-blue-gray-200 focus:!border-t-amber-500"
-                  color="amber"
-                  type={showConfirmPassword ? "text" : "password"}
+                  className=" !border-t-blue-gray-200 focus:!border-t-teal-300"
+                  color="teal"                 type={showConfirmPassword ? "text" : "password"}
                   value={confirmPassword}
                   onChange={handleConfirmPasswordChange}
                   labelProps={{
-                    className: "before:content-none after:content-none",
+                    className: "before:content-none after:content-none text-gray-200",
                   }}
                 />
                 <button
@@ -184,6 +185,7 @@ const SignUpPage = () => {
                 >
                   <FontAwesomeIcon
                     icon={showConfirmPassword ? faEyeLowVision : faEye}
+                    className="text-gray-200"
                   />
                 </button>
               </div>
@@ -192,9 +194,9 @@ const SignUpPage = () => {
               )}
             </div>
           </div>
-          <div className="bg-gray-100 p-4 text-justify">
-            <p className="text-xs text-gray-700">
-              By signing in to the Electric Surveillance System, you agree to
+          <div className="bg-gray-700 p-4 text-justify rounded-lg">
+            <p className="text-xs text-gray-200">
+              By signing in to the Sentimental Analysis and Fake review Detection System, you agree to
               comply with all applicable laws and regulations regarding the use
               of this system.
               <br></br>
@@ -203,7 +205,7 @@ const SignUpPage = () => {
               monitored and recorded for security purposes.
             </p>
           </div>
-          <Button color="amber" type="submit" fullWidth disabled={!isFormValid}>
+          <Button color="teal" type="submit" fullWidth disabled={!isFormValid}>
             Sign Up
           </Button>
         </form>
