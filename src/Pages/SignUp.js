@@ -87,7 +87,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-16 py-8 bg-gray-800 text-white">
+
       <Card
         shadow={false}
         className="w-full md:w-fit max-w-md flex flex-col items-center gap-6 px-8 py-12 md:border md:border-gray-300 bg-[#1b1b35]"
@@ -210,7 +210,7 @@ const SignUpPage = () => {
           </Button>
         </form>
       </Card>
-    </div>
+
   );
 };
 

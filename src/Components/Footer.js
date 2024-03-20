@@ -5,7 +5,7 @@ import { faCopyright, faHeart } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
     const Tag = ({ children }) => {
         return (
-            <span className="px-3 py-1 rounded-lg bg-[#2F2F2F] text-xs text-gray-400 uppercase select-none">
+            <span className="px-3 py-1 rounded-lg bg-[#464646] text-xs text-gray-400 uppercase select-none">
                 {children}
             </span>
         );
@@ -22,9 +22,9 @@ const Footer = () => {
 
     const SEOTags = (
         <div className="flex items-center gap-4 font-semibold">
-            <Tag>KE</Tag>
-            <Tag>Electricity</Tag>
-            <Tag>Surveillance</Tag>
+            <Tag>sentiments</Tag>
+            <Tag>Real</Tag>
+            <Tag>Fake</Tag>
         </div>
     );
 
@@ -55,15 +55,15 @@ const Footer = () => {
 
     return (
         <footer className="text-white">
-            <div className="px-8 lg:px-48 py-12 bg-gray-900">
+            <div className="px-8 lg:px-48 py-12 bg-[linear-gradient(0deg,rgba(50,50,50,1)0%,rgba(76,76,76,1)41%,rgba(107,107,107,1)100%)]">
                 <div className="flex flex-col md:flex-row gap-8 items-start justify-between">
                     <div className="flex flex-col gap-4">
-                        <h2 className="text-2xl font-semibold">EMSS</h2>
+                        <h2 className="text-2xl font-semibold">REVSAFE</h2>
                         <div className="flex flex-col gap-2 text-gray-400">
                             <p className="w-full lg:w-2/5 text-xs text-justify">
-                                Enhance energy management efficiency with our Electric Meter Surveillance System. Track
-                                real-time usage, optimize costs, and prioritize security for a smarter approach to
-                                energy consumption.
+                                Product Analysis with our REVSAFE. Track
+                                real-time usage of product, detect Fake and real reviews, and prioritize Authenicity for a smarter approach to
+                                sentiments of the customers.
                             </p>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ const Footer = () => {
                 <div>
                     <p>
                         Copyright <FontAwesomeIcon icon={faCopyright} /> 2024 &middot; All rights reserved | Made with{" "}
-                        <FontAwesomeIcon icon={faHeart} /> by <span className="font-bold">EMSS</span>.
+                        <FontAwesomeIcon icon={faHeart} /> by <span className="font-bold">ZARYAB NAQVI</span>.
                     </p>
                 </div>
                 <div>{legalLinks}</div>

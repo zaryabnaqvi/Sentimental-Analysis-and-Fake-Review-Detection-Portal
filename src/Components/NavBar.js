@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faBars } from "@fortawesome/free-solid-svg-icons";
 
 import Logo from "./Logo";
+import { SignInModal } from "./ModalSignin";
+import SignUpPage from "../Pages/SignUp";
+import { SignUpModal } from "./ModalSignUp";
 
 const NavBar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -49,16 +52,12 @@ const NavBar = () => {
 
     const accessControlButtons = (
         <div className="flex items-center gap-2">
-            <a href="/accounts/sign-in" className="min-w-24 flex-1">
-                <Button variant="text" size="sm" color="white" fullWidth>
-                    Sign In
-                </Button>
-            </a>
-            <a href="/accounts/sign-up" className="min-w-24 flex-1">
-                <Button variant="gradient" size="sm" color="white" fullWidth>
-                    Sign Up
-                </Button>
-            </a>
+           <div>
+               <SignInModal/>
+               </div>
+               <div>
+            <SignUpModal/>
+            </div>
         </div>
     );
 

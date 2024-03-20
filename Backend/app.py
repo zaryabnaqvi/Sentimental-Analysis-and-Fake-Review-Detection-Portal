@@ -1,12 +1,14 @@
 
+import string
 import numpy as np
 import pandas as pd
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import requests
-
+# from bs4 import BeautifulSoup
 import re
-
+import pickle
+import sklearn
 from flask import Flask , request
 from pymongo import MongoClient
 from werkzeug.utils import secure_filename
@@ -21,6 +23,10 @@ import os
 # import tensorflow as tf
 # from pymongo import ObjectId
 from bson.objectid import ObjectId
+import nltk
+# nltk.download('stopwords')
+from nltk.corpus import stopwords
+
 
 
 
@@ -28,7 +34,15 @@ import requests
 
 from io import BytesIO
 
-
+def open_image_from_url(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Check if request was successful
+        image = Image.open(BytesIO(response.content))
+        return image
+    except Exception as e:
+        print("Error:", e)
+        return None
 
 app = Flask(__name__)
 jwt = JWTManager(app) # initialize JWTManager
@@ -46,7 +60,6 @@ db=client.sentimental_analysis
 user = db.user
 result = db.result
 
-
 tokenizer = AutoTokenizer.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
 
 model = AutoModelForSequenceClassification.from_pretrained('nlptown/bert-base-multilingual-uncased-sentiment')
@@ -55,6 +68,12 @@ def sentiment_score(review):
     tokens = tokenizer.encode(review, return_tensors='pt')
     result = model(tokens)
     return int(torch.argmax(result.logits))+1
+def text_process(review):
+    nopunc = [char for char in review if char not in string.punctuation]
+    nopunc = ''.join(nopunc)
+    return [word for word in nopunc.split() if word.lower() not in stopwords.words('english')]
+with open('model.pkl', 'rb') as f:
+    loaded_model = pickle.load(f)
 
 ALLOWED_EXTENSIONS = {'csv'}
 
@@ -130,10 +149,23 @@ def sentimental():
         print(filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         df=pd.read_csv(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        df.columns.values[0]='review'
-        df['sentiment'] = df['review'].apply(lambda x: sentiment_score(x[:512]))
+
+        df.columns = map(str.upper, df.columns)
+        
+        # Ensure 'review' column exists
+        if 'REVIEW' not in df.columns:
+            return jsonify({'error': 'No review column in the dataframe'}), 400
+        else:
+            try:
+                df['sentiment'] = df['REVIEW'].apply(lambda x: sentiment_score(x[:512]))
+                predictions = loaded_model.predict(df['REVIEW'])
+                df['Predictions']=predictions
+                df['Predictions']= df['Predictions'].apply(lambda x: 'Fake' if x == 'CG' else 'Genuine')
+
+            except TypeError or ValueError:
+                return jsonify({'error': 'Error calculating sentiment score. Type Error or Value error'}), 400
         json=df.to_json(orient='records', indent=4)
-        return json 
+        return json
 
 
         # return jsonify({'message': 'File successfully uploaded'}), 200

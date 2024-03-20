@@ -99,10 +99,14 @@ const Dashboard = () => {
               </Button>
             </div>
             <div className="self-center sm:self-end md:w-auto">
-              <Button className="mr-0 md:mr-3 mt-3 lg:mt-0 text-gray-900 bg-[#3ae3a6]">
-                <FontAwesomeIcon className="mr-2" icon={faFile} />
+            <button className="mr-0 md:mr-3 mt-3 lg:mt-0 flex justify-center items-center  rounded-lg bg-[#3ae3a6] text-gray-900">
+              <label htmlFor="csv-file" className=" cursor-pointer py-2 px-4  object-cover uppercase font-semibold text-sm">
+                <FontAwesomeIcon className="mr-2 " icon={faFile} />
                 Upload CSV File 
-              </Button>
+                <input type="file" id="csv-file" className="hidden"/>
+              </label>
+              </button>
+         
             </div>
           </div>
         </div>

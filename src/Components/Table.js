@@ -9,34 +9,34 @@ const TABLE_HEAD = [
 
 const TABLE_ROWS = [
   {
-    num: "John Michael",
-    review: "Manager",
+    num: "1",
+    review: "reviewsssssssss",
     sentiment: "positive",
     fake:"fake"
   },
   {
-    num: "Alexa Liras",
-    review: "Developer",
+    num: "40",
+    review: "reviewsssssssssr",
     sentiment: "positive",
     fake:"fake"
   },
   {
-    num: "Laurent Perrier",
-    review: "Executive",
+    num: "2",
+    review: "reviewsssssssss",
+    sentiment: "negative",
+    fake:"real"
+  },
+  {
+    num: "3",
+    review: "reviewsssssssssr",
     sentiment: "positive",
     fake:"fake"
   },
   {
-    num: "Michael Levi",
-    review: "Developer",
+    num: "4",
+    review: "reviewsssssssss",
     sentiment: "positive",
-    fake:"fake"
-  },
-  {
-    num: "Richard Gran",
-    review: "Manager",
-    sentiment: "positive",
-    fake:"fake"
+    fake:"real"
   },
 ];
 
